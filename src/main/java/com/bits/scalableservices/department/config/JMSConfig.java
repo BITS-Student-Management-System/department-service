@@ -32,14 +32,6 @@ public class JMSConfig {
 	}
 
 	@Bean
-	public BrokerService broker() throws Exception {
-		BrokerService broker = new BrokerService();
-		broker.addConnector(DEFAULT_BROKER_URL);
-		broker.setPersistent(false);
-		return broker;
-	}
-
-	@Bean
 	public JmsTemplate jmsTemplate() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());

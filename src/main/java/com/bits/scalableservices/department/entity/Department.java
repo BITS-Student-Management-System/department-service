@@ -6,17 +6,17 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "DEPARTMENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Department {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
-    private Long departmentId;
-    private String departmentCode;
-    private String departmentName;
-    private int numberOfStudents;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false)
+	private Long departmentId;
+	private String departmentCode;
+	private String departmentName;
+	private int numberOfStudents;
 }

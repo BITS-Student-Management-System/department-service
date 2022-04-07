@@ -6,12 +6,15 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Optional;
 
+import org.apache.activemq.broker.BrokerService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.core.JmsTemplate;
@@ -21,7 +24,7 @@ import com.bits.scalableservices.department.entity.Department;
 import com.bits.scalableservices.department.repository.DepartmentRepository;
 
 @EnableAutoConfiguration
-@Import(JMSConfig.class)
+@Import({ JMSConfig.class, TestConfig.class })
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @EnableJms
 class DepartmentServiceApplicationTests {
@@ -55,4 +58,16 @@ class DepartmentServiceApplicationTests {
 
 	}
 
+}
+
+@Configuration
+class TestConfig {
+
+	@Bean
+	public BrokerService broker() throws Exception {
+		BrokerService broker = new BrokerService();
+		broker.addConnector("tcp://localhost:61616");
+		broker.setPersistent(false);
+		return broker;
+	}
 }
