@@ -1,4 +1,4 @@
-package com.roopika.department.entity;
+package com.bits.scalableservices.department.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
