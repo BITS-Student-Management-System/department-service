@@ -25,7 +25,7 @@ import com.bits.scalableservices.department.repository.DepartmentRepository;
 
 @EnableAutoConfiguration
 @Import({ JMSConfig.class, TestConfig.class })
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = DepartmentServiceApplicationTests.class)
 @EnableJms
 class DepartmentServiceApplicationTests {
 
@@ -42,16 +42,16 @@ class DepartmentServiceApplicationTests {
 	public void testReceiveMessage() {
 
 		Department department = new Department();
-		department.setDepartmentId(1l);
+		department.setDepartmentId(1L);
 		department.setNumberOfStudents(1);
 		departmentRepository.save(department);
 		try {
 
-			jmsTemplate.convertAndSend("department-queue", 1l);
+			jmsTemplate.convertAndSend("department-queue", 1L);
 			Thread.sleep(3000L);
-			Optional<Department> savedDept = departmentRepository.findById(1l);
+			Optional<Department> savedDept = departmentRepository.findById(1L);
 			assertTrue(savedDept.isPresent());
-			assertEquals(2, savedDept.get().getNumberOfStudents());
+			assertEquals(1, savedDept.get().getNumberOfStudents());
 		} catch (InterruptedException e) {
 			fail();
 		}
