@@ -3,7 +3,6 @@ package com.bits.scalableservices.department.config;
 import javax.jms.Queue;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +14,7 @@ import org.springframework.jms.core.JmsTemplate;
 @EnableJms
 public class JMSConfig {
 
-	private static final String DEFAULT_BROKER_URL = "tcp://localhost:61616";
+	private static final String DEFAULT_BROKER_URL = "tcp://192.168.29.57:61616";
 
 	@Bean
 	public Queue queue() {
