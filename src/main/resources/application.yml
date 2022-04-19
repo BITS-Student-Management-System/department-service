@@ -3,4 +3,4 @@ server:
 
 spring:
   application:
-    name: DEPARTMENT-SERVICE
+    name: department-service
