@@ -15,7 +15,7 @@ import org.springframework.jms.core.JmsTemplate;
 @EnableJms
 public class JMSConfig {
 
-	private static final String DEFAULT_BROKER_URL = "tcp://localhost:61616";
+	private static final String DEFAULT_BROKER_URL = "tcp://hostname:61616";
 
 	@Bean
 	public Queue queue() {
