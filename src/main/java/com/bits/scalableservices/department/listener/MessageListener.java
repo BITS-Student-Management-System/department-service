@@ -37,7 +37,7 @@ public class MessageListener {
 				++numberofStudents;
 				department.setNumberOfStudents(numberofStudents);
 				departmentRepository.save(departmentRecord.get());
-				log.info("Total number of students in " + dept.getDepartmentId() + " : " + dept.getNumberOfStudents());
+				log.info("Total number of students in department " + dept.getDepartmentId() + " : " + dept.getNumberOfStudents());
 			});
 
 		} catch (IOException e) {
